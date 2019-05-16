@@ -2,7 +2,7 @@
  * Основная функция для совершения запросов
  * на сервер.
  * */
-const createRequest = (options = {}) => {
+const createRequest = async function(options = {} , callback) {
   let fetchrequest = {  
     method: options.method,
     mode: "cors",
@@ -14,10 +14,11 @@ const createRequest = (options = {}) => {
   
 fetch(options.url, fetchrequest)
     .then(function(response) {
-      return response.json();
+      return response.json()
     })
     .then(function(data) {
       console.log(data);
+      callback(data)
     })
     .catch(function(err) {
       console.log("Something went wrong!", err);

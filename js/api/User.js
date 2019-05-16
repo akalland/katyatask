@@ -9,8 +9,8 @@ class User {
    * Устанавливает текущего пользователя в
    * локальном хранилище.
    * */
-  static setCurrent(user) {
-
+  static setCurrent(data) {
+    localStorage.setItem('user', JSON.stringify(data.user));
   }
 
   /**
@@ -57,9 +57,10 @@ class User {
     let testrequest= {
       url: "http://bhj-diploma.u-w.me/user/register",
       method: "POST",
-      data:data,
+      data: data,
     }
-    createRequest(testrequest)
+    let response = createRequest(testrequest, User.setCurrent);
+    console.log(response)
   }
 
   /**

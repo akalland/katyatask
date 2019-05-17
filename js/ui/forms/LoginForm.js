@@ -11,6 +11,7 @@ class LoginForm {
    * закрывает окно, в котором находится форма
    * */
   onSubmit( options ) {
-
+    console.log("user login" + options);
+    User.login(options);
   }
 }

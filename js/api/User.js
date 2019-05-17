@@ -60,7 +60,7 @@ class User {
       data: data,
     }
     let response = createRequest(testrequest, User.setCurrent);
-    console.log(response)
+    callback(response);
   }
 
   /**

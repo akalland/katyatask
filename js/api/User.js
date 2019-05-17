@@ -10,32 +10,32 @@ class User {
    * локальном хранилище.
    * */
   static setCurrent(data) {
-    localStorage.setItem('user', JSON.stringify(data.user));
+    localStorage.setItem("user", JSON.stringify(data.user));
   }
 
   /**
    * Удаляет информацию об авторизованном
    * пользователе из локального хранилища.
    * */
-  static unsetCurrent() {
-
-  }
+  static unsetCurrent() {}
 
   /**
    * Возвращает текущего авторизованного пользователя
    * из локального хранилища
    * */
   static current() {
-
+    try {
+      return JSON.parse(localStorage.getItem("user"));
+    } catch (e) {
+      return null;
+    }
   }
 
   /**
    * Получает информацию о текущем
    * авторизованном пользователе.
    * */
-  static fetch( data, callback = f => f ) {
-
-  }
+  static fetch(data, callback = f => f) {}
 
   /**
    * Производит попытку авторизации.
@@ -43,12 +43,12 @@ class User {
    * сохранить пользователя через метод
    * User.setCurrent.
    * */
-  static login( data, callback = f => f ) {
-    let testrequest= {
+  static login(data, callback = f => f) {
+    let testrequest = {
       url: "http://bhj-diploma.u-w.me/user/register",
       method: "POST",
-      data: data,
-    }
+      data: data
+    };
     let response = createRequest(testrequest, User.setCurrent);
     callback(response);
   }
@@ -59,12 +59,12 @@ class User {
    * сохранить пользователя через метод
    * User.setCurrent.
    * */
-  static register( data, callback = f => f ) {
-    let testrequest= {
+  static register(data, callback = f => f) {
+    let testrequest = {
       url: "http://bhj-diploma.u-w.me/user/register",
       method: "POST",
-      data: data,
-    }
+      data: data
+    };
     let response = createRequest(testrequest, User.setCurrent);
     callback(response);
   }
@@ -73,7 +73,5 @@ class User {
    * Производит выход из приложения. После успешного
    * выхода необходимо вызвать метод User.unsetCurrent
    * */
-  static logout( data, callback = f => f ) {
-
-  }
+  static logout(data, callback = f => f) {}
 }

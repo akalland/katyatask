@@ -14,7 +14,6 @@ class LoginForm {
     console.log("user login" + options);
     User.login(options , (err, response) => {
       App.setState('user-logged');
-      Modal.close();
      });
   }
 }

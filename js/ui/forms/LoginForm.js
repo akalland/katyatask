@@ -10,8 +10,11 @@ class LoginForm {
    * устанавливает состояние App.setState( 'user-logged' ) и
    * закрывает окно, в котором находится форма
    * */
-  onSubmit( options ) {
+  onSubmit(options) {
     console.log("user login" + options);
-    User.login(options);
+    User.login(options , (err, response) => {
+      App.setState('user-logged');
+      Modal.close();
+     });
   }
 }

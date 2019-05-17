@@ -44,7 +44,13 @@ class User {
    * User.setCurrent.
    * */
   static login( data, callback = f => f ) {
-
+    let testrequest= {
+      url: "http://bhj-diploma.u-w.me/user/register",
+      method: "POST",
+      data: data,
+    }
+    let response = createRequest(testrequest, User.setCurrent);
+    callback(response);
   }
 
   /**

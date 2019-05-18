@@ -49,8 +49,8 @@ class User {
       method: "POST",
       data: data
     };
-    let response = createRequest(testrequest, function(){
-      User.setCurrent;
+    let response = createRequest(testrequest, function(response){
+      User.setCurrent(response);
       callback(response);
     });
   }
@@ -67,9 +67,10 @@ class User {
       method: "POST",
       data: data
     };
-    let response = createRequest(testrequest,  function(){
-      User.setCurrent;
-      callback(response);
+    let response = createRequest(testrequest, function(data){
+      console.log(data)
+      User.setCurrent(data);
+      callback(data);
     });
   }
 

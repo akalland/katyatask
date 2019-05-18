@@ -13,6 +13,7 @@ class LoginForm {
   onSubmit(options) {
     console.log("user login" + options);
     User.login(options , (err, response) => {
+      User.setCurrent(response.user)
       App.setState('user-logged');
      });
   }

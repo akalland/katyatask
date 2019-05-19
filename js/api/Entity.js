@@ -22,9 +22,7 @@ class Entity {
    * что наследуется от Entity)
    * */
   static create( data, callback = f => f ) {
-    let options = {}
-    options.method = data["_method"]
-    options.body = 
+    let options = data
     options.url = Entity.HOST + Entity.URL
     createRequest(options, callback);
   }

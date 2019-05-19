@@ -39,7 +39,6 @@ class User {
     let testrequest = {
       url: "http://bhj-diploma.u-w.me/user/current",
       method: "GET",
-      body: data
     };
     let response = createRequest(testrequest, function(response){
       User.setCurrent(response);
@@ -74,8 +73,9 @@ class User {
   static register(data, callback = f => f) {
     let testrequest = {
       url: "http://bhj-diploma.u-w.me/user/register",
-      _method: "POST",
+      method: "POST",
       body: data,
+      mode: "corse",
         };
     let response = createRequest(testrequest, function(data){
       console.log(data)

@@ -39,7 +39,7 @@ class User {
     let testrequest = {
       url: "http://bhj-diploma.u-w.me/user/current",
       method: "GET",
-      data: data
+      body: data
     };
     let response = createRequest(testrequest, function(response){
       User.setCurrent(response);
@@ -57,7 +57,7 @@ class User {
     let testrequest = {
       url: "http://bhj-diploma.u-w.me/user/register",
       method: "POST",
-      data: data
+      body: data
     };
     let response = createRequest(testrequest, function(response){
       User.setCurrent(response);

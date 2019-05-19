@@ -12,11 +12,13 @@ class CreateAccountForm extends AsyncForm {
 	 * и сбрасывает форму
 	 * */
 	onSubmit( options ) {
-	 const result = Account.create(options, (err, res) => {
+	let data = {};
+	data.body = {name: options.name};
+	data._method = options._method;
+	 const result = Account.create(data, (err, res) => {
 	  if(result) {
-	 modal.close();
-		  App.update();
-	 
+		modal.close();
+		App.update();
 	  }
 	 }); 
 	}

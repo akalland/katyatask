@@ -11,13 +11,9 @@ class Entity {
    * (в зависимости от того, что наследуется от Entity)
    * */
   static list( data, callback = f => f ) {
-    let options = {
-      data: data,
-      method: 'GET',
-      url: this.host + this.url,
-    }  
-    createRequest(options);
-
+    let options = data
+    options.url = Entity.HOST + Entity.URL
+    createRequest(options, callback);
   }
 
   /**
@@ -36,12 +32,9 @@ class Entity {
    * (в зависимости от того, что наследуется от Entity)
    * */
   static get( id = '', data, callback = f => f ) {
-    let options = {
-      data: data,
-      method: 'GET',
-      url: this.host + this.url + '/' + id
-    }
-    createRequest(options);
+    let options = data
+    options.url = Entity.HOST + Entity.URL+"/"+id
+    createRequest(options, callback);
 
   }
 
@@ -50,14 +43,9 @@ class Entity {
    * (в зависимости от того, что наследуется от Entity)
    * */
   static update( id = '', data, callback = f => f ) {
-    let options = {
-      data: data,
-      method: 'POST',
-      url: this.host + this.url + '/' + id
-    }
-    createRequest(options);
-    
-
+    let options = data
+    options.url = Entity.HOST + Entity.URL+"/"+id
+    createRequest(options, callback);
   }
 
   /**
@@ -65,13 +53,9 @@ class Entity {
    * (в зависимости от того, что наследуется от Entity)
    * */
   static remove( id = '', data, callback = f => f ) {
-    let modifiedData = Object.assign({ _method: 'DELETE' }, data );
-    const options = {
-      data: modifiedData,
-      method: 'POST',
-      url: this.host + this.url + '/' + id
-    }
-    createRequest(options)
+    let options = data
+    options.url = Entity.HOST + Entity.URL+"/"+id
+    createRequest(options, callback);
   }
 }
 Entity.URL = '';

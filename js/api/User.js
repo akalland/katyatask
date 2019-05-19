@@ -75,8 +75,8 @@ class User {
     let testrequest = {
       url: "http://bhj-diploma.u-w.me/user/register",
       method: "POST",
-      data: data
-    };
+      body: data,
+        };
     let response = createRequest(testrequest, function(data){
       console.log(data)
       User.setCurrent(data);

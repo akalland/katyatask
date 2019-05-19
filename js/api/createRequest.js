@@ -3,9 +3,23 @@
  * на сервер.
  * */
 const createRequest = async function(options = {} , callback) {
-fetchrequest = options;
-options.mode = "cors";
 
+let fetchrequest ={}
+fetchrequest.method = options.method
+fetchrequest.mode = "cors";
+
+if (options.hasOwnProperty("body")){
+  var form_data = new FormData();
+  for ( var key in options.body ) {
+      form_data.append(key, options.body[key]);
+  }
+  fetchrequest.body = form_data;
+}
+
+
+//fetchrequest.credentials = "include";
+console.log(fetchrequest);
+console.log(options.url);
 fetch(options.url, fetchrequest)
     .then(function(response) {
       return response.json()

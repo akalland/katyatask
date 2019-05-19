@@ -51,8 +51,8 @@ class AccountsWidget {
       let accountsList = []
       accountsList.push(Account.list(user));
       for(let account of accountsList) {
-        AccountsWidget.clear();
-        AccountsWidget.render(accountsList[account]);
+        //AccountsWidget.clear();
+        //AccountsWidget.render(accountsList[account]);
       }
     }
   }

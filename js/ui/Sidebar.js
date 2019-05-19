@@ -39,7 +39,8 @@ class Sidebar {
    * */
   static initAuthLinks() {
     const login_button = document.querySelector('.menu-item_login');
-    const register_button = document.querySelector('.menu-item_register')
+    const register_button = document.querySelector('.menu-item_register');
+    const logout_button = document.querySelector('.menu-item_logout')
     let modal;
     login_button.addEventListener('click', () => {
       modal = App.getModal('login');
@@ -49,6 +50,13 @@ class Sidebar {
       modal = App.getModal('register');
       modal.open();
     })
+    logout_button.addEventListener('click', () => {
+      User.logout();
+      
+        App.setState( 'init' )
+      
+    })
   }
+  
 
 }

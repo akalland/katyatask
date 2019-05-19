@@ -3,15 +3,9 @@
  * на сервер.
  * */
 const createRequest = async function(options = {} , callback) {
-  let fetchrequest = {  
-    method: options.method,
-    mode: "cors",
-    headers: {'Content-Type': 'application/json'},
-  }
-  if (options.method === "POST"){
-    fetchrequest.body = JSON.stringify(options.data)
-  }
-  
+fetchrequest = options;
+options.mode = "cors";
+
 fetch(options.url, fetchrequest)
     .then(function(response) {
       return response.json()

@@ -4,10 +4,6 @@
  * Имеет свойство HOST, равно 'http://bhj-diploma.u-w.me'.
  * */
 class Entity {
-  constructor() {
-    this.host = 'http://bhj-diploma.u-w.me',
-    this.url = ''
-  }
 
   /**
    * Запрашивает с сервера список данных.
@@ -30,14 +26,9 @@ class Entity {
    * что наследуется от Entity)
    * */
   static create( data, callback = f => f ) {
-    let options = {
-      data: data,
-      method: 'POST',
-      url: this.host + this.url,
-    }
-    createRequest(options);
-    
-
+    let options = data
+    options.url = Entity.HOST + Entity.URL
+    createRequest(options, callback);
   }
 
   /**
@@ -83,4 +74,5 @@ class Entity {
     createRequest(options)
   }
 }
-
+Entity.URL = '';
+Entity.HOST = 'http://bhj-diploma.u-w.me';

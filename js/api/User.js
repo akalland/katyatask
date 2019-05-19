@@ -35,7 +35,17 @@ class User {
    * Получает информацию о текущем
    * авторизованном пользователе.
    * */
-  static fetch(data, callback = f => f) {}
+  static fetch(data, callback = f => f) {
+    let testrequest = {
+      url: "http://bhj-diploma.u-w.me/user/current",
+      method: "GET",
+      data: data
+    };
+    let response = createRequest(testrequest, function(response){
+      User.setCurrent(response);
+      callback(response);
+    });
+  }
 
   /**
    * Производит попытку авторизации.

@@ -1,20 +1,20 @@
-/**
- * Класс AccountsWidget управляет блоком
- * отображения счетов в боковой колонке
- * */
 class AccountsWidget {
   /**
    * Устанавливает текущий элемент в свойство element
    * Регистрирует обработчики событий с помощью
    * AccountsWidget.registerEvents()
    * Вызывает AccountsWidget.update() для получения
-   * списка счетов и последующего отоd
-   * бражения
+   * списка счетов и последующего отображения
    * Если переданный элемент не существует,
    * необходимо выкинуть ошибку.
    * */
   constructor( element ) {
-
+    if(element) {
+      this.element = element;
+    } else {console.error('element пустой')};
+    this.registerEvents()
+    this.update()
+  
   }
 
   /**
@@ -25,6 +25,13 @@ class AccountsWidget {
    * вызывает AccountsWidget.onSelectAccount()
    * */
   registerEvents() {
+    const create_account = document.querySelector('.create-account');
+    
+    create_account.addEventListener('click', () => { 
+      let modal = App.getModal('createAccount');
+      modal.open();
+      
+    })
 
   }
 
@@ -39,7 +46,15 @@ class AccountsWidget {
    * метода render()
    * */
   update() {
-
+    const user = User.current();
+    if(user) {
+      let accountsList = []
+      accountsList.push(Account.list(user));
+      for(let account of accountsList) {
+        AccountsWidget.clear();
+        AccountsWidget.render(accountsList[account]);
+      }
+    }
   }
 
   /**

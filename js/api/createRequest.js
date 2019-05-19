@@ -5,9 +5,9 @@
 const createRequest = async function(options = {} , callback) {
 
 let fetchrequest ={}
-fetchrequest.method = options.method
+fetchrequest.method = options._method;
 fetchrequest.mode = "cors";
-
+fetchrequest.credentials = "include";
 if (options.hasOwnProperty("body")){
   var form_data = new FormData();
   for ( var key in options.body ) {

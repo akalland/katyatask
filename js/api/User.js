@@ -74,7 +74,7 @@ class User {
   static register(data, callback = f => f) {
     let testrequest = {
       url: "http://bhj-diploma.u-w.me/user/register",
-      method: "POST",
+      _method: "POST",
       body: data,
         };
     let response = createRequest(testrequest, function(data){

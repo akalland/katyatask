@@ -17,6 +17,7 @@ class TransactionsPage {
       console.error('error');
     }
     this.registerEvents()
+    console.log("success!")
 
   }
 
@@ -25,6 +26,7 @@ class TransactionsPage {
    * */
   update() {
     this.render()
+
 
   }
 

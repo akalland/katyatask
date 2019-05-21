@@ -17,7 +17,9 @@ class User {
    * Удаляет информацию об авторизованном
    * пользователе из локального хранилища.
    * */
-  static unsetCurrent() {}
+  static unsetCurrent() {
+    localStorage.removeItem('user');
+  }
 
   /**
    * Возвращает текущего авторизованного пользователя
@@ -84,9 +86,12 @@ class User {
     });
   }
 
+
   /**
    * Производит выход из приложения. После успешного
    * выхода необходимо вызвать метод User.unsetCurrent
    * */
-  static logout(data, callback = f => f) {}
+  static logout(data, callback = f => f) {
+    
+  }
 }

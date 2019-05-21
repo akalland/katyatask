@@ -151,7 +151,6 @@ class App {
     this.state = state;
 
     if ( state === 'user-logged' ) {
-      console.log("state:" + state);
       this.update();
     }
     if ( state === 'init' ) {

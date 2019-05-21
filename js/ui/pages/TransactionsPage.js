@@ -106,7 +106,7 @@ class TransactionsPage {
    * Устанавливает заголовок: «Название счёта»
    * */
   clear() {
-    this.renderTransaction([]);
+    //this.renderTransaction([]);
     this.renderTitle('Название счёта')
 
   }

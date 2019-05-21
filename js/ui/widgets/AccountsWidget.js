@@ -1,3 +1,7 @@
+/**
+ * Класс AccountsWidget управляет блоком
+ * отображения счетов в боковой колонке
+ * */
 class AccountsWidget {
   /**
    * Устанавливает текущий элемент в свойство element
@@ -32,6 +36,12 @@ class AccountsWidget {
       modal.open();
       
     })
+    const accounts = document.querySelectorAll('.account');
+    for (let account of accounts) {
+      account.addEventListener('click', () => {
+        this.onSelectAccount(accounts[account])
+      })
+    }
 
   }
 
@@ -71,6 +81,8 @@ class AccountsWidget {
    * в боковой колонке
    * */
   clear() {
+    const accounts = document.querySelectorAll('.account');
+
 
   }
 

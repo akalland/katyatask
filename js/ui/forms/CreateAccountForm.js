@@ -13,13 +13,15 @@ class CreateAccountForm extends AsyncForm {
 	 * */
 	onSubmit( options ) {
 	let data = {};
-	data.body = {name: options.name};
-	data.method = options._method;
+	data.body = options;
+	//data.method = options._method;
+	data.method = "POST";
 	 const result = Account.create(data, (err, res) => {
-	  if(result) {
-		modal.close();
+	 
+		let modal = App.getModal("createAccount");
+    modal.close();
 		App.update();
-	  }
+
 	 }); 
 	}
   }

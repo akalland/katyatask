@@ -21,8 +21,8 @@ const createRequest = async function(options = {} , callback) {
   console.log(fetchrequest);
   console.log(options.url);
   fetch(options.url, fetchrequest)
-      .then(function(response) {
-        return response.json()
+      .then(function(body) {
+        return body.json()
       })
       .then(function(data) {
         console.log(data);

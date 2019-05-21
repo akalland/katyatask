@@ -24,9 +24,9 @@ const createRequest = async function(options = {} , callback) {
       .then(function(response) {
         return response.json()
       })
-      .then(function(data) {
-        console.log(data);
-        callback(data)
+      .then(function(response) {
+        console.log(response);
+        callback(response);
       })
       .catch(function(err) {
         console.log("Something went wrong!", err);

@@ -24,7 +24,7 @@ class Entity {
   static create( data, callback = f => f ) {
     let options = data
     options.url = Entity.HOST + Entity.URL
-    createRequest(options, callback);
+    createRequest(options, callback(data));
   }
 
   /**

@@ -21,12 +21,12 @@ const createRequest = async function(options = {} , callback) {
   console.log(fetchrequest);
   console.log(options.url);
   fetch(options.url, fetchrequest)
-      .then(function(response) {
-        return response.json()
+      .then(function(body) {
+        return body.json()
       })
-      .then(function(response) {
-        console.log(response);
-        callback(response);
+      .then(function(data) {
+        console.log(data);
+        callback(data)
       })
       .catch(function(err) {
         console.log("Something went wrong!", err);

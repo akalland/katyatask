@@ -57,13 +57,15 @@ class AccountsWidget {
    * */
   update() {
     const user = User.current();
-    if(user) {
-      let accountsList = []
-      accountsList.push(Account.list(user));
-      for(let account of accountsList) {
-        //AccountsWidget.clear();
-        //AccountsWidget.render(accountsList[account]);
-      }
+    if(user != null ) {
+      let account = Account.list({},(accountsList) => {
+        console.log(accountsList);
+        AccountsWidget.clear();
+        for(let account of accountsList) {
+          
+          AccountsWidget.render(accountsList[account]);
+        }
+      });
     }
   }
 

@@ -15,7 +15,7 @@ class AccountsWidget {
   constructor( element ) {
     if(element) {
       this.element = element;
-    } else {console.error('element пустой')};
+    } else {console.log('error')};
     this.registerEvents()
     this.update()
   
@@ -55,7 +55,7 @@ class AccountsWidget {
     if(user != null ) {
       let account = Account.list({},(accountsList) => {
         console.log(accountsList);
-        localStorage.setItem("accountslist", JSON.stringify(accountsList.data));
+        //localStorage.setItem("accountslist", JSON.stringify(accountsList.data));
         this.clear();
         this.render(accountsList.data);
         this.registerEvents();

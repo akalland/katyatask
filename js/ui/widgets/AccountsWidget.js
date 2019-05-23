@@ -103,7 +103,9 @@ class AccountsWidget {
         active.classList.remove('active');
       }
       element.classList.add('active');
-      App.showPage('transactions', id );
+      let id = document.querySelector('.active').dataset.id
+      App.showPage('transactions', {account_id: id} );
+      console.log('id id here' + {account_id: id})
     }
   }
 

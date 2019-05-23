@@ -1,32 +1,45 @@
-class CreateTransactionForm extends AsyncForm {
+/**
+ * Класс CreateTransactionForm управляет формой
+ * создания новой транзакции
+ * Наследуется от AsyncForm
+ * */
+class CreateTransactionForm extends AsyncForm{
   /**
    * Вызывает родительский конструктор и
    * метод renderAccountsList
    * */
-  constructor(element) {
-    super(element);
+  constructor( element ) {
+    super(element)
     this.element = element;
-    this.renderAccountsList();
+    this.renderAccountsList()
+
   }
 
-  update() {}
+  update() {
+    
+  }
 
   /**
    * Получает список счетов с помощью Account.list
    * Обновляет в форме всплывающего окна выпадающий список
    * */
   renderAccountsList() {
-    let account = Account.list({}, accountsList => {
+    let account = Account.list({},(accountsList) => {
       console.log(accountsList.data);
-      for (let i = 0; i < accountsList.data.length; i++) {
-        let data = accountsList.data[i];
-        console.log(data.id + "here");
-        this.element.querySelector(".accounts-select").innerHTML += `
+      for (let i = 0; i < accountsList.data.length; i++){
+        let data = accountsList.data[i]
+        console.log(data.id +"here")
+        this.element.querySelector('.accounts-select').innerHTML += `
           <option value="${data.id}">${data.name}</option>
         `;
       }
+     
     });
-  }
+
+  }  
+    
+  
+  
 
   /**
    * Создаёт новую транзакцию (доход или расход)
@@ -34,22 +47,23 @@ class CreateTransactionForm extends AsyncForm {
    * вызывает App.update(), сбрасывает форму и закрывает окно,
    * в котором находится форма
    * */
-  onSubmit(options) {
-    let data = {};
-    data.body = options;
-    //data.method = options._method;
-    data.method = "POST";
-    console.log("button hit!");
+  onSubmit( options ) {
+  let data = {};
+	data.body = options;
+	//data.method = options._method;
+  data.method = "POST";
+  
+	 const result = Transaction.create(data, (res) => {
+    
+    let modalInc = App.getModal('newIncome');
+    
+    modalInc.close();
+    let modalExp = App.getModal('newExpense');
+    
+    modalExp.close();
+    
+		App.update();
 
-    const result = Transaction.create(data, res => {
-      let modalInc = App.getModal("newIncome");
-
-      modalInc.close();
-      let modalExp = App.getModal("newExpense");
-
-      modalExp.close();
-
-      App.update();
-    });
-  }
+	 }); 
+	}
 }

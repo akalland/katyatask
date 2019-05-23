@@ -44,7 +44,7 @@ class Entity {
    * */
   static update( id = '', data, callback = f => f ) {
     let options = data
-    options.url = this.HOST + this.URL +"/"+id
+    options.url = this.HOST + this.URL+"/"+id
     createRequest(options, callback);
   }
 
@@ -54,7 +54,8 @@ class Entity {
    * */
   static remove( id = '', data, callback = f => f ) {
     let options = data
-    options.url = this.HOST + this.URL +"/"+id
+    options.method = "DELETE"
+    options.url = this.HOST + this.URL+"/"+id
     createRequest(options, callback);
   }
 }

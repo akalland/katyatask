@@ -17,7 +17,6 @@ class TransactionsPage {
       console.log('error');
     }
     this.registerEvents();
-    this.account_id = 0
   }
 
   /**
@@ -89,7 +88,6 @@ class TransactionsPage {
    * в TransactionsPage.renderTransactions()
    * */
     render( options ) {
-      this.account_id = options
       if(! options) {
         console.log('error');
         return;

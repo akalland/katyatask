@@ -1,6 +1,10 @@
 /**
  * Класс App управляет всем приложением
  * */
+var globalAccounts = null;
+var globalTransactions = null; 
+var globalActiveAccount = null;
+
 class App {
   /**
    * С вызова этого метода начинается работа всего приложения

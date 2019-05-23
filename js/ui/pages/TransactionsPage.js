@@ -93,6 +93,11 @@ class TransactionsPage {
         return;
       }
       this.lastOptions = options;
+      let id = document.querySelector('.active').dataset.id
+      Account.get( id, {}, ( err, response ) => {
+        console.log(response)
+      this.renderTitle( globalActiveAccount.name );
+      });
     }
   
 
